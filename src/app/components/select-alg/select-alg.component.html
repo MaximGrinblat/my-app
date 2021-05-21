@@ -1,0 +1,12 @@
+<div class="controls-container">
+  <div>
+    <label class="select-label"> Select Algorithm: </label>
+    <select [(ngModel)]="algorithm" name="singleSelect"
+            (ngModelChange)="onChangeofOptions($event)">
+      <option value="option-1">Select</option>
+      <option value="Hybrid ALG">Hybrid ALG</option>
+      <option value="Regression ALG">Regression ALG</option>
+    </select>
+  </div>
+  <button class="submit-button" type="button" (click)="onSubmit()">Upload</button>
+</div>

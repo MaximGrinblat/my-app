@@ -1,0 +1,18 @@
+.select-label{
+  color:white
+}
+
+.controls-container{
+  display: flex;
+  flex-direction: row;
+  margin-inline-start: 15px;
+  text-align: center;
+}
+
+.submit-button {
+  background: lightgreen;
+  width: 100px;
+  margin-inline-start: 50px;
+  cursor: pointer;
+
+}
