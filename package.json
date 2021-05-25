@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~11.2.13",
     "@angular/platform-browser-dynamic": "~11.2.13",
     "@angular/router": "~11.2.13",
+    "highcharts-angular": "^2.10.0",
     "ngx-csv-parser": "^0.0.7",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

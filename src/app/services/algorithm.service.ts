@@ -11,9 +11,7 @@ export class AlgorithmService {
 
   csvRecords: any[] = [];
   header = false;
-
-//   result1: Array<any> = null;
-//   result2: Array<any> = null;
+  graphLabels$ = new BehaviorSubject<string[]>([]);
 
   private algorithm$ = new BehaviorSubject<string>('');
   private fileTest$ = new BehaviorSubject<File>(null);
@@ -35,7 +33,6 @@ export class AlgorithmService {
   }
 
   onUpload() {
-    console.log(this.algorithm$.getValue());
     const f1: File = this.fileTest$.getValue();
     const f2: File = this.fileTrain$.getValue();
 
@@ -44,15 +41,14 @@ export class AlgorithmService {
         this.ngxCsvParser.parse(f1, { header: this.header, delimiter: ',' }),
         this.ngxCsvParser.parse(f2, { header: this.header, delimiter: ',' }))
         .subscribe(([result1, result2]: any) => {
+            // callServer(this.algorithm$.getValue(), JSON.stringify(this.transformResult(result1)),JSON.stringify(this.transformResult(result2)));
+            this.graphLabels$.next(result1[0]);
+            console.log(this.algorithm$.getValue());
             console.log('Transformed Result1', JSON.stringify(this.transformResult(result1)));
             console.log('Transformed Result2', JSON.stringify(this.transformResult(result2)));
           }, (error: NgxCSVParserError) => {
             console.log('Error', error);
      });
-
-
-
-
   }
 
    private transformResult(result: Array<any>):Array<any> {

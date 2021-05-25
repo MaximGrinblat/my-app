@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlgorithmService } from '../../services/algorithm.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-select-alg',
@@ -8,14 +9,22 @@ import { AlgorithmService } from '../../services/algorithm.service';
 })
 export class SelectALGComponent implements OnInit {
   algorithm: string;
+  graph: string;
+
+  graphLabels$: Observable<string[]>;
 
   constructor(private algService: AlgorithmService) { }
 
   ngOnInit(): void {
+    this.graphLabels$ = this.algService.graphLabels$.asObservable();
   }
 
-  onChangeofOptions(newAlg) {
+  onChangeofAlgOptions(newAlg) {
        this.algService.updateAlgorithm(newAlg);
+  }
+
+  onChangeofGraphOptions(newGraph) {
+       //this.algService.updateGraph(newGraph);
   }
 
   onSubmit() {

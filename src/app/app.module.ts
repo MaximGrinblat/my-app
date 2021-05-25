@@ -18,7 +18,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { TableComponent } from './components/table/table.component';
 import { FormsModule } from '@angular/forms';
 import { NgxCsvParserModule } from 'ngx-csv-parser';
-
+import { HighchartsChartModule } from 'highcharts-angular';
+import { GraphComponent } from './components/graph/graph.component';
 
 @NgModule({
   declarations: [
@@ -28,11 +29,13 @@ import { NgxCsvParserModule } from 'ngx-csv-parser';
     DropZoneComponent,
     DialogConfirmComponent,
     TableComponent,
+    GraphComponent
   ],
   imports: [
     BrowserModule,
     NgxCsvParserModule,
     FormsModule,
+    HighchartsChartModule,
     NoopAnimationsModule,
     MatIconModule,
     MatInputModule,
