@@ -17,6 +17,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { TableComponent } from './components/table/table.component';
 import { FormsModule } from '@angular/forms';
+import { NgxCsvParserModule } from 'ngx-csv-parser';
 
 
 @NgModule({
@@ -26,10 +27,11 @@ import { FormsModule } from '@angular/forms';
     FileDragNDropDirective,
     DropZoneComponent,
     DialogConfirmComponent,
-    TableComponent
+    TableComponent,
   ],
   imports: [
     BrowserModule,
+    NgxCsvParserModule,
     FormsModule,
     NoopAnimationsModule,
     MatIconModule,

@@ -16,7 +16,7 @@ export class FileDragNDropDirective {
     File[]
   > = new EventEmitter();
   //@Output() private filesInvalidEmiter : EventEmitter<File[]> = new EventEmitter();
-  @HostBinding('style.background') private background = '#eee';
+  @HostBinding('style.background') private background = 'lightblue';
   @HostBinding('style.border') private borderStyle = '2px dashed';
   @HostBinding('style.border-color') private borderColor = '#696D7D';
   @HostBinding('style.border-radius') private borderRadius = '5px';
@@ -34,7 +34,7 @@ export class FileDragNDropDirective {
   @HostListener('dragleave', ['$event']) public onDragLeave(evt) {
     evt.preventDefault();
     evt.stopPropagation();
-    this.background = '#eee';
+    this.background = 'lightblue';
     this.borderColor = '#696D7D';
     this.borderStyle = '2px dashed';
   }
@@ -42,7 +42,7 @@ export class FileDragNDropDirective {
   @HostListener('drop', ['$event']) public onDrop(evt) {
     evt.preventDefault();
     evt.stopPropagation();
-    this.background = '#eee';
+    this.background = 'lightblue';
     this.borderColor = '#696D7D';
     this.borderStyle = '2px dashed';
     debugger;
