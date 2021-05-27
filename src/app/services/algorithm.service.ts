@@ -11,6 +11,8 @@ export class AlgorithmService {
 
   csvRecords: any[] = [];
   header = false;
+  selectedChart = "";
+  table = [];
   graphLabels$ = new BehaviorSubject<string[]>([]);
 
   private algorithm$ = new BehaviorSubject<string>('');
@@ -42,6 +44,7 @@ export class AlgorithmService {
         this.ngxCsvParser.parse(f2, { header: this.header, delimiter: ',' }))
         .subscribe(([result1, result2]: any) => {
             // callServer(this.algorithm$.getValue(), JSON.stringify(this.transformResult(result1)),JSON.stringify(this.transformResult(result2)));
+            this.table = result1;
             this.graphLabels$.next(result1[0]);
             console.log(this.algorithm$.getValue());
             console.log('Transformed Result1', JSON.stringify(this.transformResult(result1)));
