@@ -23,8 +23,9 @@ export class SelectALGComponent implements OnInit {
        this.algService.updateAlgorithm(newAlg);
   }
 
-  onChangeofGraphOptions(newGraph) {
-       //this.algService.updateGraph(newGraph);
+  change($event) {
+       event.target.options.$event;
+
   }
 
   onSubmit() {
