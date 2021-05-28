@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import * as Highcharts from 'highcharts';
 import {AlgorithmService} from "../../services/algorithm.service";
 
+
 // import {SelectALGComponent} from "../select-alg/select-alg.component";
 
 @Component({
@@ -19,13 +20,56 @@ export class GraphComponent implements OnInit {
   selectedIdx = -1;
   updateFlag: true;
 
-  example = [{"start": 11, "end": 13, "description": "A-B"},
-    {"start": 11, "end": 120, "description": "B-F"},
-    {"start": 10, "end": 40, "description": "C-D"},
-    {"start": 5, "end": 77, "description": "D-E"},
-    {"start": 1, "end": 9, "description": "E-F"},
-    {"start": 2, "end": 2, "description": "F-A"}
-  ];
+  /* example = [{"start": 11, "end": 13, "description": "A~B"},
+    {"start": 11, "end": 120, "description": "B~F"},
+    {"start": 10, "end": 40, "description": "C~D"},
+    {"start": 5, "end": 77, "description": "D~E"},
+    {"start": 1, "end": 9, "description": "E~F"},
+    {"start": 2, "end": 2, "description": "F~A"}
+  ]; */
+  example = [{"start": 11, "end": 13, "description": "aileron~slats"},
+      {"start": 11, "end": 120, "description": "elevator~rudder"},
+      {"start": 10, "end": 40, "description": "rudder~flaps"},
+      {"start": 5, "end": 77, "description": "flaps~elevator"},
+      {"start": 1, "end": 9, "description": "slats~rudder"},
+      {"start": 2, "end": 2, "description": "speedbrake~aileron"},
+      {"start": 11, "end": 120, "description": "throttle~rudder"},
+      {"start": 10, "end": 40, "description": "throttle~flaps"},
+      {"start": 5, "end": 77, "description": "engine-pump~elevator"},
+      {"start": 1, "end": 9, "description": "engine-pump~rudder"},
+      {"start": 2, "end": 2, "description": "electric-pump~aileron"},
+      {"start": 11, "end": 120, "description": "electric-pump~rudder"},
+      {"start": 10, "end": 40, "description": "external-power~flaps"},
+      {"start": 5, "end": 77, "description": "APU-generator~elevator"},
+      {"start": 1, "end": 9, "description": "latitude-deg~rudder"},
+      {"start": 2, "end": 2, "description": "longitude-deg~aileron"},
+      {"start": 2, "end": 2, "description": "altitude-ft~aileron"},
+      {"start": 11, "end": 120, "description": "roll-deg~rudder"},
+      {"start": 10, "end": 40, "description": "pitch-deg~flaps"},
+      {"start": 5, "end": 77, "description": "heading-deg~elevator"},
+      {"start": 1, "end": 9, "description": "side-slip-deg~rudder"},
+      {"start": 2, "end": 2, "description": "airspeed-kt~aileron"},
+      {"start": 5, "end": 77, "description": "glideslope~elevator"},
+      {"start": 1, "end": 9, "description": "vertical-speed-fps~rudder"},
+      {"start": 2, "end": 2, "description": "airspeed-indicator_indicated-speed-kt~aileron"},
+      {"start": 2, "end": 2, "description": "altimeter_indicated-altitude-ft~aileron"},
+      {"start": 11, "end": 120, "description": "altimeter_pressure-alt-ft~rudder"},
+      {"start": 10, "end": 40, "description": "attitude-indicator_indicated-pitch-deg~flaps"},
+      {"start": 5, "end": 77, "description": "attitude-indicator_indicated-roll-deg~elevator"},
+      {"start": 1, "end": 9, "description": "attitude-indicator_internal-pitch-deg~rudder"},
+      {"start": 2, "end": 2, "description": "attitude-indicator_internal-roll-deg~aileron"},
+      {"start": 1, "end": 9, "description": "encoder_indicated-altitude-ft~rudder"},
+      {"start": 2, "end": 2, "description": "encoder_pressure-alt-ft~aileron"},
+      {"start": 2, "end": 2, "description": "gps_indicated-altitude-ft~aileron"},
+      {"start": 11, "end": 120, "description": "gps_indicated-ground-speed-kt~rudder"},
+      {"start": 10, "end": 40, "description": "gps_indicated-vertical-speed~flaps"},
+      {"start": 5, "end": 77, "description": "indicated-heading-deg~elevator"},
+      {"start": 1, "end": 9, "description": "magnetic-compass_indicated-heading-deg~rudder"},
+      {"start": 2, "end": 2, "description": "slip-skid-ball_indicated-slip-skid~aileron"},
+      {"start": 300, "end": 500, "description": "turn-indicator_indicated-turn-rate~attitude-indicator_internal-pitch-deg"},
+      {"start": 2, "end": 2, "description": "vertical-speed-indicator_indicated-speed-fpm~aileron"},
+      {"start": 5, "end": 77, "description": "engine_rpm~elevator"}
+    ];
   parsed: any;
   matchedChart: any;
   matchedChartIdx = -1;
@@ -74,8 +118,8 @@ export class GraphComponent implements OnInit {
 
   displayChart(): void {
     let parsed = [];
-    for (let i = 0; i < this.algService.table[0].length; i++) {
-      parsed = this.rsplit(this.example[i]['description'], "-", 1);
+    for (let i = 0; i < this.example.length; i++) {
+      parsed = this.rsplit(this.example[i]['description'], "~", 1);
       if (parsed[0] == this.algService.selectedChart) {
         this.matchedChart = parsed[1];
         this.startIdx = this.example[i]["start"];
