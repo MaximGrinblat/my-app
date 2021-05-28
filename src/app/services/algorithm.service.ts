@@ -68,7 +68,6 @@ export class AlgorithmService {
       }
       return transformedResult;
   }
-// a/snl
 
 
 }
