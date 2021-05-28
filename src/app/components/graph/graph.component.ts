@@ -21,10 +21,10 @@ export class GraphComponent implements OnInit {
 
   example = [{"start": 11, "end": 13, "description": "A-B"},
     {"start": 11, "end": 120, "description": "B-F"},
-    {"start": 11, "end": 13, "description": "C-D"},
-    {"start": 11, "end": 13, "description": "D-E"},
-    {"start": 11, "end": 13, "description": "E-F"},
-    {"start": 11, "end": 13, "description": "F-A"}
+    {"start": 10, "end": 40, "description": "C-D"},
+    {"start": 5, "end": 77, "description": "D-E"},
+    {"start": 1, "end": 9, "description": "E-F"},
+    {"start": 2, "end": 2, "description": "F-A"}
   ];
   parsed: any;
   matchedChart: any;
@@ -48,7 +48,7 @@ export class GraphComponent implements OnInit {
       },
       {
         name: "Anomaly",
-        data: [[this.startIdx, 50], [this.endIdx, 50]]
+        data: [[this.startIdx, 0], [this.endIdx, 0]]
       }
     ];
     this.options = {
@@ -56,11 +56,11 @@ export class GraphComponent implements OnInit {
         type: 'spline'
       },
       title: {
-        text: 'Monthly Site Visitor'
+        text: 'Anomaly Graph'
       },
       yAxis: {
         title: {
-          text: 'Visitors'
+          text: 'value'
         }
       },
       series: this.data
