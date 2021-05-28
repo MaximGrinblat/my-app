@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { SelectALGComponent } from './components/select-alg/select-alg.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -44,7 +44,8 @@ import { GraphComponent } from './components/graph/graph.component';
     MatGridListModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
