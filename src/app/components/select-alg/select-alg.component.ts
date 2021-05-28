@@ -31,6 +31,5 @@ export class SelectALGComponent implements OnInit {
   onSubmit() {
     this.algService.onUpload();
   }
-/*  */sd
 
 }
