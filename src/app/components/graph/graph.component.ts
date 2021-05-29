@@ -20,12 +20,14 @@ export class GraphComponent implements OnInit {
   selectedIdx = -1;
   updateFlag: true;
 
-  /* example = [{"start": 11, "end": 13, "description": "A~B"},
+   /* example = [{"start": 11, "end": 13, "description": "A~B"},
     {"start": 11, "end": 120, "description": "B~F"},
     {"start": 10, "end": 40, "description": "C~D"},
     {"start": 5, "end": 77, "description": "D~E"},
     {"start": 1, "end": 9, "description": "E~F"},
-    {"start": 2, "end": 2, "description": "F~A"}
+    {"start": 2, "end": 2, "description": "F~A"},
+    {"start": 100, "end": 109, "description": "G~B"},
+        {"start": 50, "end": 200, "description": "H~C"}
   ]; */
   example = [{"start": 11, "end": 13, "description": "aileron~slats"},
       {"start": 11, "end": 120, "description": "elevator~rudder"},
@@ -115,8 +117,8 @@ export class GraphComponent implements OnInit {
     var split = st.split(sep);
     return maxsplit ? [split.slice(0, -maxsplit).join(sep)].concat(split.slice(-maxsplit)) : split;
   }
-
-  displayChart(): void {
+//this.algService.response;
+ /*  displayChart(): void {
     let parsed = [];
     for (let i = 0; i < this.example.length; i++) {
       parsed = this.rsplit(this.example[i]['description'], "~", 1);
@@ -129,7 +131,22 @@ export class GraphComponent implements OnInit {
     this.matchedChartIdx = this.getIdxChart(this.algService.table, this.matchedChart);
     this.selectedIdx = this.getIdxChart(this.algService.table, this.algService.selectedChart);
     this.ngOnInit();
-  }
+  } */
+  displayChart(): void {
+      let parsed = [];
+      for (let i = 0; i < Object.keys(this.algService.response).length; i++) {
+        parsed = this.rsplit(this.algService.response[i]['description'], "~", 1);
+        if (parsed[0] == this.algService.selectedChart) {
+          this.matchedChart = parsed[1];
+          this.startIdx = this.algService.response[i]["start"];
+          this.endIdx = this.algService.response[i]["end"];
+        }
+      }
+      this.matchedChartIdx = this.getIdxChart(this.algService.table, this.matchedChart);
+      this.selectedIdx = this.getIdxChart(this.algService.table, this.algService.selectedChart);
+      this.ngOnInit();
+    }
+
 
   getIdxChart(matrix, chart) {
     let i = 0;
