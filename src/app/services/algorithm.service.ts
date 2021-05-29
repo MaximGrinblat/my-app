@@ -28,14 +28,13 @@ export class AlgorithmService {
 
   postFile(file1: File, file2: File): void {
     const formData: FormData = new FormData();
-    formData.append('kaki1', file1, file1.name);
-    formData.append('kaki2', file2, file2.name);
-    const upload$ = this.httpClient.post(this.SERVER_URL, formData, {
-      headers: new HttpHeaders({
-        'Content-Type': 'x-www-form-urlencoded'
-      })
+    formData.append('train_data', file1, file1.name);
+    formData.append('test_data', file2, file2.name);
+    const headers = {'Content-Type': 'application/x-www-form-urlencoded'};
+    const params = {'model_type': this.algorithm$.getValue()};
+    this.httpClient.post<any>(this.SERVER_URL, formData, {headers, params}).subscribe(data => {
+      this.response = data;
     });
-    upload$.subscribe();
   }
 
   updateAlgorithm(alg: string) {

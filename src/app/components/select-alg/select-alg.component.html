@@ -4,8 +4,8 @@
     <select [(ngModel)]="algorithm" name="singleSelect"
             (ngModelChange)="onChangeofAlgOptions($event)">
       <option value="option-1">Select</option>
-      <option value="Hybrid ALG">hybrid</option>
-      <option value="Regression ALG">reg</option>
+      <option value="hybrid">hybrid</option>
+      <option value="reg">reg</option>
     </select>
   </div>
   <button class="submit-button" type="button" (click)="onSubmit()">Upload</button>
